@@ -1,0 +1,20 @@
+.App {
+    margin-left: 3rem;
+}
+
+.keys {
+    width: 40rem;
+    height: 8rem;
+    background-color: cornflowerblue;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  button {
+    background-color: white;
+    height: 6rem;
+    width: 6rem;
+    margin-right: 1rem;
+  }

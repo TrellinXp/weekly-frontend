@@ -1,0 +1,10 @@
+.button {
+    background-color: white;
+    height: 6rem;
+    width: 6rem;
+    margin-right: 1rem;
+}
+
+.reset {
+    margin-top: 2rem;
+}
