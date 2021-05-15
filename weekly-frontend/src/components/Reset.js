@@ -10,13 +10,7 @@ export default function Reset() {
     });
 
     function reset(e) {
-        var buttons = document.getElementsByTagName('button');
-        for (let i = 0; i < buttons.length; i++) {
-            let button = buttons[i];
-            button.style.backgroundColor = "white";
-            // ...
-        }
-    
+        resetButtonColors();
         axios
         .post(resetApi, {
           headers: {
@@ -24,10 +18,18 @@ export default function Reset() {
           }
         }
         )
-        .then(() => console.log('Book Created'))
+        .then(() => console.log("Reset Successfull"))
         .catch(err => {
           console.error(err);
         });
+    }
+
+    function resetButtonColors() {
+        var buttons = document.getElementsByTagName('button');
+        for (let i = 0; i < buttons.length; i++) {
+            let button = buttons[i];
+            button.style.backgroundColor = "white";
+        }
     }
 
     return <div className="reset">

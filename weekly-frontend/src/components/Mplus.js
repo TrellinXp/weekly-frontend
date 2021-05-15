@@ -32,10 +32,12 @@ export default function Mplus() {
             }
         }
         )
-        .then(() => console.log('Object Update'))
-        .catch(err => {
-            console.error(err);
-        });
+        .then(res => {
+            console.log("Data updated")
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     return <div><div><h2>Mythic Plus Keys</h2></div> <div className="mpluskeys">
