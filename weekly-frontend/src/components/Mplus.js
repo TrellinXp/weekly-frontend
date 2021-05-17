@@ -13,8 +13,6 @@ export default function Mplus() {
     });
 
     function handleClick(e, mpluskey) {
-        document.getElementById(mpluskey.Counter).style.backgroundColor = 'Green';
-
         mpluskey.CompletionDate = Date.now();
         mpluskey.Completed = 1;
         const response = postData(weeklyApi, mpluskey)
@@ -40,10 +38,19 @@ export default function Mplus() {
         })
     }
 
+    function getBackgroundColor(mpluskey) {
+        if(mpluskey.Completed === 1) {
+            return "green";
+        }
+        else {
+            return "white";
+        }
+    }
+
     return <div><div><h2>Mythic Plus Keys</h2></div> <div className="mpluskeys">
         {data && data?.map(mpluskey => (
-            <button id={mpluskey.Counter} value={mpluskey} className="key" key={mpluskey.Counter} onClick={(e) => handleClick(e, mpluskey)}>
-                {mpluskey.Counter}
+            <button id={mpluskey.Counter} value={mpluskey} style={{backgroundColor: getBackgroundColor(mpluskey)}} className="key" key={mpluskey.Counter} 
+                onClick={(e) => handleClick(e, mpluskey)}> {mpluskey.Counter}
             </button>
         ))}
     </div>

@@ -21,8 +21,6 @@ export default function Raids(props) {
     });
 
     function handleClick(e, raid) {
-        document.getElementById("raid"+difficulty+raid.Counter).style.backgroundColor = 'Green';
-
         raid.CompletionDate = Date.now();
         raid.Completed = 1;
         const response = postData(raidsApi, raid)
@@ -46,9 +44,18 @@ export default function Raids(props) {
         });
     }
 
+    function getBackgroundColor(raid) {
+        if(raid.Completed === 1) {
+            return "green";
+        }
+        else {
+            return "white";
+        }
+    }
+
     return <div><div><h2>Raid Bosses {difficulty}</h2></div> <div className="mpluskeys">
         {data && data?.map(raid => (
-            <button id={'raid'+difficulty+raid.Counter} value={raid} className="key" key={raid.Counter} onClick={(e) => handleClick(e, raid)}>
+            <button id={'raid'+difficulty+raid.Counter} value={raid} className="raid"  style={{backgroundColor: getBackgroundColor(raid)}}  key={raid.Counter} onClick={(e) => handleClick(e, raid)}>
                 {raid.Counter}
             </button>
         ))}
