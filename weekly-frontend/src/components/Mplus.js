@@ -47,7 +47,7 @@ export default function Mplus() {
         }
     }
 
-    return <div><div><h2>Mythic Plus Keys</h2></div> <div className="mpluskeys">
+    return <div><div><h2>Mythic Plus Keys </h2></div> <div className="mpluskeys">
         {data && data?.map(mpluskey => (
             <button id={mpluskey.Counter} value={mpluskey} style={{backgroundColor: getBackgroundColor(mpluskey)}} className="key" key={mpluskey.Counter} 
                 onClick={(e) => handleClick(e, mpluskey)}> {mpluskey.Counter}
