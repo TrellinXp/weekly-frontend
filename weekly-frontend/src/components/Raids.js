@@ -10,40 +10,42 @@ export default function Raids(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
-        if(difficulty === 'HC') {
-            if(!isLoaded)  {
-                 fetch(raidsApiHC)
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                        setIsLoaded(true);
-                        setData(result);
-                    },
-                    // Note: it's important to handle errors here
-                    // instead of a catch() block so that we don't swallow
-                    // exceptions from actual bugs in components.
-                    (error) => {
-                        setIsLoaded(true);
-                        setError(error);
-                    }
-                )
+        if (difficulty === 'HC') {
+            if (!isLoaded) {
+                fetch(raidsApiHC)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            setIsLoaded(true);
+                            setData(result);
+                        },
+                        // Note: it's important to handle errors here
+                        // instead of a catch() block so that we don't swallow
+                        // exceptions from actual bugs in components.
+                        (error) => {
+                            setIsLoaded(true);
+                            setError(error);
+                        }
+                    )
             }
         } else {
-            fetch(raidsApi)
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                        setIsLoaded(true);
-                        setData(result);
-                    },
-                    // Note: it's important to handle errors here
-                    // instead of a catch() block so that we don't swallow
-                    // exceptions from actual bugs in components.
-                    (error) => {
-                        setIsLoaded(true);
-                        setError(error);
-                    }
-                )
+            if (!isLoaded) {
+                fetch(raidsApi)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            setIsLoaded(true);
+                            setData(result);
+                        },
+                        // Note: it's important to handle errors here
+                        // instead of a catch() block so that we don't swallow
+                        // exceptions from actual bugs in components.
+                        (error) => {
+                            setIsLoaded(true);
+                            setError(error);
+                        }
+                    )
+            }
         }
     });
 
