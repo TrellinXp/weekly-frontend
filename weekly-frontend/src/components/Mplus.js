@@ -67,8 +67,6 @@ export default function Mplus() {
     }
     if (error) {
         return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return console.log("Loading Mplus Keys");
     } else {
     return <div><div><h2>Mythic Plus Keys </h2></div> <div className="mpluskeys">
         {data && data?.map(mpluskey => (

@@ -96,8 +96,6 @@ export default function Raids(props) {
 
     if (error) {
         return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return console.log("Loading Raids");
     } else {
     return <div><div><h2>Raid Bosses {difficulty}</h2></div> <div className="mpluskeys">
         {data && data?.map(raid => (
