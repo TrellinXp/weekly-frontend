@@ -1,5 +1,4 @@
 import React, { useEffect} from 'react';
-import axios from 'axios';
 import './Reset.css';
 
 export default function Reset() {
