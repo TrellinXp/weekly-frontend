@@ -7,11 +7,7 @@ export default function Mplus() {
     const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly';
 
     useEffect(() => {
-        /*
-        fetch(weeklyApi)
-            .then(response => response.json())
-            .then(data => setData(data));
-        */
+
     });
 
     function handleClick(e, mpluskey) {
