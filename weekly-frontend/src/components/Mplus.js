@@ -3,7 +3,7 @@ import './Mplus.css';
 import axios from 'axios';
 
 export default function Mplus() {
-    const [data, setData] = useState([]);
+    const [data] = useState([]);
     const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly';
 
     useEffect(() => {

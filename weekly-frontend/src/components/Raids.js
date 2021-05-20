@@ -3,7 +3,7 @@ import './Raids.css';
 import axios from 'axios';
 
 export default function Raids(props) {
-    const [data, setData] = useState([]);
+    const [data] = useState([]);
     const raidsApi = 'https://wowweekly-node.herokuapp.com/api/raid';
     const raidsApiHC = 'https://wowweekly-node.herokuapp.com/api/raidHC';
     const difficulty = props.difficulty;
@@ -15,7 +15,11 @@ export default function Raids(props) {
     function handleClick(e, raid) {
         raid.CompletionDate = Date.now();
         raid.Completed = 1;
-        const response = postData(raidsApi, raid)
+        if(difficulty === 'NHC') {
+            const response = postData(raidsApi, raid);
+            return response;
+        }
+        const response = postData(raidsApi, raidsApiHC);
         return response;
     }
 
