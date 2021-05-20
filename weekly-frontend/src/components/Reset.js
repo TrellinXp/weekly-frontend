@@ -11,17 +11,8 @@ export default function Reset() {
 
     function reset(e) {
         resetButtonColors();
-        axios
-        .get(resetApi, {
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }
-        )
-        .then(() => console.log("Reset Successfull"))
-        .catch(err => {
-          console.error(err);
-        });
+        fetch(resetApi)
+            .then(console.log("Weekly Reset"));
     }
 
     function resetButtonColors() {
