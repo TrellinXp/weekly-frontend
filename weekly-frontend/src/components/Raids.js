@@ -3,13 +3,46 @@ import './Raids.css';
 import axios from 'axios';
 
 export default function Raids(props) {
-    const [data] = useState([]);
+    const [data, setData] = useState([]);
     const raidsApi = 'https://wowweekly-node.herokuapp.com/api/raid';
     const raidsApiHC = 'https://wowweekly-node.herokuapp.com/api/raidHC';
     const difficulty = props.difficulty;
-
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
-
+        if(difficulty === 'HC') {
+            fetch(raidsApiHC)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        setData(result);
+                    },
+                    // Note: it's important to handle errors here
+                    // instead of a catch() block so that we don't swallow
+                    // exceptions from actual bugs in components.
+                    (error) => {
+                        setIsLoaded(true);
+                        setError(error);
+                    }
+                )
+        } else {
+            fetch(raidsApi)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        setData(result);
+                    },
+                    // Note: it's important to handle errors here
+                    // instead of a catch() block so that we don't swallow
+                    // exceptions from actual bugs in components.
+                    (error) => {
+                        setIsLoaded(true);
+                        setError(error);
+                    }
+                )
+        }
     });
 
     function handleClick(e, raid) {
@@ -49,6 +82,11 @@ export default function Raids(props) {
         }
     }
 
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div>Loading...</div>;
+    } else {
     return <div><div><h2>Raid Bosses {difficulty}</h2></div> <div className="mpluskeys">
         {data && data?.map(raid => (
             <button id={'raid'+difficulty+raid.Counter} value={raid} className="raid"  style={{backgroundColor: getBackgroundColor(raid)}}  key={raid.Counter} onClick={(e) => handleClick(e, raid)}>
@@ -57,4 +95,5 @@ export default function Raids(props) {
         ))}
     </div>
     </div>
+    }
 }
