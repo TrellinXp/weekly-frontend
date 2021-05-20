@@ -9,6 +9,7 @@ export default function Raids(props) {
     const difficulty = props.difficulty;
 
     useEffect(() => {
+        /*
         if(difficulty === 'HC') {
             fetch(raidsApiHC)
                 .then(response => response.json())
@@ -18,6 +19,7 @@ export default function Raids(props) {
                 .then(response => response.json())
                 .then(data => setData(data));
         }
+        */
     });
 
     function handleClick(e, raid) {
