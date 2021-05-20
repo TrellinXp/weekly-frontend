@@ -4,8 +4,8 @@ import axios from 'axios';
 
 export default function Raids(props) {
     const [data, setData] = useState([]);
-    const raidsApi = 'http://localhost:4000/api/raid';
-    const raidsApiHC = 'http://localhost:4000/api/raidHC';
+    const raidsApi = 'https://wowweekly-node.herokuapp.com/api/raid';
+    const raidsApiHC = 'https://wowweekly-node.herokuapp.com/api/raidHC';
     const difficulty = props.difficulty;
 
     useEffect(() => {

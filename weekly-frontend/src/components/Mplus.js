@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default function Mplus() {
     const [data, setData] = useState([]);
-    const weeklyApi = 'http://localhost:4000/api/weekly';
+    const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly';
 
     useEffect(() => {
         fetch(weeklyApi)
