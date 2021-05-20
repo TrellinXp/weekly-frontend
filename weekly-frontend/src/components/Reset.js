@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Reset.css';
 
 export default function Reset() {
-    const resetApi = 'http://localhost:4000/api/reset';
+    const resetApi = 'https://wowweekly-node.herokuapp.com/api/reset';
 
     useEffect(() => {
 
@@ -12,7 +12,7 @@ export default function Reset() {
     function reset(e) {
         resetButtonColors();
         axios
-        .post(resetApi, {
+        .get(resetApi, {
           headers: {
             'Content-Type': 'application/json',
           }
