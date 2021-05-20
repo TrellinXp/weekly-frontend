@@ -12,42 +12,50 @@ export default function Raids(props) {
     useEffect(() => {
         if (difficulty === 'HC') {
             if (!isLoaded) {
-                fetch(raidsApiHC)
-                    .then(res => res.json())
-                    .then(
-                        (result) => {
-                            setIsLoaded(true);
-                            setData(result);
-                        },
-                        // Note: it's important to handle errors here
-                        // instead of a catch() block so that we don't swallow
-                        // exceptions from actual bugs in components.
-                        (error) => {
-                            setIsLoaded(true);
-                            setError(error);
-                        }
-                    )
+                loadHCRaids();
             }
         } else {
             if (!isLoaded) {
-                fetch(raidsApi)
-                    .then(res => res.json())
-                    .then(
-                        (result) => {
-                            setIsLoaded(true);
-                            setData(result);
-                        },
-                        // Note: it's important to handle errors here
-                        // instead of a catch() block so that we don't swallow
-                        // exceptions from actual bugs in components.
-                        (error) => {
-                            setIsLoaded(true);
-                            setError(error);
-                        }
-                    )
+                loadNHCRaids();
             }
         }
-    });
+    })
+
+    function loadNHCRaids() {
+        fetch(raidsApi)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setIsLoaded(true);
+                setData(result);
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+        )
+    }
+
+    function loadHCRaids() {
+        fetch(raidsApiHC)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setData(result);
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }
 
     function handleClick(e, raid) {
         raid.CompletionDate = Date.now();

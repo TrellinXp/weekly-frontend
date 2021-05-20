@@ -9,9 +9,14 @@ export default function Mplus() {
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         if(!isLoaded)  {
-            fetch(weeklyApi)
-            .then(res => res.json())
-            .then(
+            loadMplusKeys();
+        }
+    });
+
+    function loadMplusKeys() {
+        fetch(weeklyApi)
+        .then(res => res.json())
+        .then(
             (result) => {
                 setIsLoaded(true);
                 setData(result);
@@ -23,9 +28,8 @@ export default function Mplus() {
                 setIsLoaded(true);
                 setError(error);
             }
-            )  
-        }
-    });
+        )
+    }
 
     function handleClick(e, mpluskey) {
         mpluskey.CompletionDate = Date.now();
