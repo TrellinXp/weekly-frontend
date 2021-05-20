@@ -8,21 +8,23 @@ export default function Mplus() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
-        fetch(weeklyApi)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setData(result);
-          },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )  
+        if(!isLoaded)  {
+            fetch(weeklyApi)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                setIsLoaded(true);
+                setData(result);
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+            )  
+        }
     });
 
     function handleClick(e, mpluskey) {

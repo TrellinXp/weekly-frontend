@@ -11,7 +11,8 @@ export default function Raids(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         if(difficulty === 'HC') {
-            fetch(raidsApiHC)
+            if(!isLoaded)  {
+                 fetch(raidsApiHC)
                 .then(res => res.json())
                 .then(
                     (result) => {
@@ -26,6 +27,7 @@ export default function Raids(props) {
                         setError(error);
                     }
                 )
+            }
         } else {
             fetch(raidsApi)
                 .then(res => res.json())
