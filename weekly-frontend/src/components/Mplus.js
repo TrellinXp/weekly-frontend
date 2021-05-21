@@ -40,10 +40,7 @@ export default function Mplus() {
 
     async function postData(url, data) {
         data.Completed = 1;
-
-        var jsonString = JSON.stringify(data);
-
-        axios.post(url, {data1: jsonString}, {
+        axios.post(url, {data1: data.Id}, {
             headers: {
                 'Content-Type': 'application/json',
             }
