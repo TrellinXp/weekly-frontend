@@ -43,7 +43,7 @@ export default function Mplus() {
 
         var jsonString = JSON.stringify(data);
 
-        axios.post(url, jsonString, {
+        axios.post(url, {data1: jsonString}, {
             headers: {
                 'Content-Type': 'application/json',
             }
