@@ -10,17 +10,19 @@ export default function Raids(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
-        if (difficulty === 'NHC') {
-            if (!isLoaded) {
-                loadNHCRaids();
-            }
-        }
-        if (difficulty === 'HC') {
-            if (!isLoaded) {
-                loadHCRaids();
-            }
+        if (!isLoaded) {
+            loadRaids();
         }
     })
+
+    function loadRaids() {
+        if (difficulty === 'NHC') {            
+            loadNHCRaids();
+        }
+        if (difficulty === 'HC') {
+            loadHCRaids();
+        }
+    }
 
     function loadNHCRaids() {
         fetch(raidsApi)
@@ -75,8 +77,7 @@ export default function Raids(props) {
         )
         .then(res => {
             console.log("Data updated");
-            loadNHCRaids();
-            loadHCRaids();
+            loadRaids();
         })
         .catch((err) => {
             console.log(err);
