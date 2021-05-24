@@ -47,7 +47,8 @@ export default function Mplus() {
         }
         )
         .then(res => {
-            console.log("Data updated")
+            console.log("Data updated");
+            loadMplusKeys();
         })
         .catch((err) => {
             console.log(err);
