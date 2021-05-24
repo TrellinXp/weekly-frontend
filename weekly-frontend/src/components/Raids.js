@@ -20,9 +20,6 @@ export default function Raids(props) {
                 loadHCRaids();
             }
         }
-        else {
-
-        }
     })
 
     function loadNHCRaids() {
@@ -67,7 +64,7 @@ export default function Raids(props) {
         if(difficulty === 'NHC') {
             const response = postData(raidsApi, raid);
             return response;
-        }
+        } 
         const response = postData(raidsApiHC, raid);
         return response;
     }
