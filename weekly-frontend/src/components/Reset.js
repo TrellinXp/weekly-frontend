@@ -14,7 +14,6 @@ export default function Reset() {
         .then(
             (result) => {
                 resetCompleted(result);
-
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
