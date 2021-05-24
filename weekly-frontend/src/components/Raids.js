@@ -64,29 +64,30 @@ export default function Raids(props) {
             const response = postData(raidsApi, raid);
             return response;
         }
-        const response = postData(raidsApi, raidsApiHC);
+        const response = postData(raidsApiHC, raid);
         return response;
     }
 
     async function postData(url, data) {
         data.Completed = 1;
-
-        var jsonString = JSON.stringify(data);
-
-        axios.post(url, jsonString, {
+        axios.post(url, {data1: data.Id}, {
             headers: {
                 'Content-Type': 'application/json',
             }
         }
         )
-        .then(() => console.log('Object Update'))
-        .catch(err => {
-            console.error(err);
-        });
+        .then(res => {
+            console.log("Data updated");
+            loadNHCRaids();
+            loadHCRaids();
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     function getBackgroundColor(raid) {
-        if(raid.Completed === 1) {
+        if(raid.Completed === "1") {
             return "green";
         }
         else {

@@ -64,6 +64,7 @@ export default function Mplus() {
             return "white";
         }
     }
+    
     if (error) {
         return <div>Error: {error.message}</div>;
     } else {
