@@ -19,6 +19,7 @@ export default function Mplus() {
         .then(
             (result) => {
                 setIsLoaded(true);
+                console.log("Loaded Data "+JSON.stringify(result));
                 setData(result);
             },
             // Note: it's important to handle errors here
