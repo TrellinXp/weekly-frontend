@@ -64,9 +64,10 @@ export default function Raids(props) {
         if(difficulty === 'NHC') {
             const response = postData(raidsApi, raid);
             return response;
-        } 
-        const response = postData(raidsApiHC, raid);
-        return response;
+        } else {
+            const response = postData(raidsApiHC, raid);
+            return response;
+        }
     }
 
     async function postData(url, data) {
