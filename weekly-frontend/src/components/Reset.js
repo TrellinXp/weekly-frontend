@@ -10,8 +10,6 @@ export default function Reset() {
     });
 
     function reset(e) {
-        resetButtonColors();
-
         fetch(resetApi)
         .then(res => res.json())
         .then(
@@ -28,15 +26,7 @@ export default function Reset() {
         fetch(resetApi)
             .then(console.log("Weekly Reset"));
     }
-
-    function resetButtonColors() {
-        var buttons = document.getElementsByTagName('button');
-        for (let i = 0; i < buttons.length; i++) {
-            let button = buttons[i];
-            button.style.backgroundColor = "white";
-        }
-    }
-
+    
     if (error) {
         return <div>Error: {error.message}</div>;
     } else {
