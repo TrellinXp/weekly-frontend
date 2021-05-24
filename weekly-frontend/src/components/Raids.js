@@ -10,14 +10,18 @@ export default function Raids(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
+        if (difficulty === 'NHC') {
+            if (!isLoaded) {
+                loadNHCRaids();
+            }
+        }
         if (difficulty === 'HC') {
             if (!isLoaded) {
                 loadHCRaids();
             }
-        } else {
-            if (!isLoaded) {
-                loadNHCRaids();
-            }
+        }
+        else {
+
         }
     })
 
