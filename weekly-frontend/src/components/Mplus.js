@@ -57,7 +57,7 @@ export default function Mplus() {
     }
 
     function getBackgroundColor(mpluskey) {
-        if(mpluskey.Completed === 1) {
+        if(mpluskey.Completed === "1") {
             return "green";
         }
         else {
