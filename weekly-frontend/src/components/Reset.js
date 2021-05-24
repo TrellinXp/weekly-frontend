@@ -15,6 +15,7 @@ export default function Reset() {
         .then(
             (result) => {
                 console.log("Weekly Reset "+JSON.stringify(result));
+                resetButtonColors();
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -26,7 +27,15 @@ export default function Reset() {
         fetch(resetApi)
             .then(console.log("Weekly Reset"));
     }
-    
+
+    function resetButtonColors() {
+        var buttons = document.getElementsByTagName('button');
+        for (let i = 0; i < buttons.length; i++) {
+            let button = buttons[i];
+            button.style.backgroundColor = "white";
+        }
+    }
+
     if (error) {
         return <div>Error: {error.message}</div>;
     } else {
