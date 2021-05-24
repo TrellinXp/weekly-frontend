@@ -26,7 +26,7 @@ export default function Mplus() {
             // instead of a catch() block so that we don't swallow
             // exceptions from actual bugs in components.
             (error) => {
-                setIsLoaded(true);
+                setIsLoaded(false);
                 setError(error);
             }
         )
