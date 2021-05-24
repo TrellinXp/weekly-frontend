@@ -13,16 +13,20 @@ export default function Reset() {
         fetch(resetApi)
         .then(
             (result) => {
-                console.log("Weekly Reset "+JSON.stringify(result));
-                resetButtonColors();
+                resetCompleted(result);
+
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
             // exceptions from actual bugs in components.
             (error) => {
                 setError(error);
-            }
-        )
+            });
+    }
+
+    function resetCompleted(result) {
+        console.log("Weekly Reset "+JSON.stringify(result));
+        resetButtonColors();
     }
 
     function resetButtonColors() {
