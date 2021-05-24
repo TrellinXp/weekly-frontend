@@ -11,7 +11,6 @@ export default function Reset() {
 
     function reset(e) {
         fetch(resetApi)
-        .then(res => res.json())
         .then(
             (result) => {
                 console.log("Weekly Reset "+JSON.stringify(result));
@@ -24,8 +23,6 @@ export default function Reset() {
                 setError(error);
             }
         )
-        fetch(resetApi)
-            .then(console.log("Weekly Reset"));
     }
 
     function resetButtonColors() {
