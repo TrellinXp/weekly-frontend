@@ -36,7 +36,7 @@ export default function Mplus() {
         mpluskey.CompletionDate = Date.now();
         mpluskey.Completed = 1;
         const response = postData(weeklyApi, mpluskey);
-        getBackgroundColor(mpluskey);
+        this.forceUpdate();
         return response;
     }
 
