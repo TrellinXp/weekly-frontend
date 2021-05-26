@@ -7,8 +7,10 @@ export default function Mplus() {
     const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly';
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    var self = this;
     useEffect(() => {
         if(!isLoaded)  {
+
             loadMplusKeys();
         }
     });
@@ -36,7 +38,7 @@ export default function Mplus() {
         mpluskey.CompletionDate = Date.now();
         mpluskey.Completed = 1;
         const response = postData(weeklyApi, mpluskey);
-        this.forceUpdate();
+        self.forceUpdate();
         return response;
     }
 
