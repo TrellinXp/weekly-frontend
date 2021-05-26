@@ -90,7 +90,12 @@ export default function Raids(props) {
             return "green";
         }
         else {
-            return "white";
+            if(raid.difficulty === "NHC") {
+                return "CornflowerBlue";
+            }
+            if(raid.difficulty === "HC") {
+                return "DarkBlue";
+            }
         }
     }    
 
