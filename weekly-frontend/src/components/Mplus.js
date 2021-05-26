@@ -7,10 +7,9 @@ export default function Mplus() {
     const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly';
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    var self = this;
+
     useEffect(() => {
         if(!isLoaded)  {
-
             loadMplusKeys();
         }
     });
@@ -34,7 +33,7 @@ export default function Mplus() {
         )
     }
 
-    function handleClick(e, mpluskey) {
+    function handleClick(e, mpluskey, self) {
         mpluskey.CompletionDate = Date.now();
         mpluskey.Completed = 1;
         const response = postData(weeklyApi, mpluskey);
@@ -74,7 +73,7 @@ export default function Mplus() {
     return <div><div><h2>Mythic Plus Keys </h2></div> <div className="mpluskeys">
         {data && data?.map(mpluskey => (
             <button id={mpluskey.Counter} value={mpluskey} style={{backgroundColor: getBackgroundColor(mpluskey)}} className="key" key={mpluskey.Counter} 
-                onClick={(e) => handleClick(e, mpluskey)}> {mpluskey.Counter}
+                onClick={(e) => handleClick(e, mpluskey, this)}> {mpluskey.Counter}
             </button>
         ))}
     </div>
