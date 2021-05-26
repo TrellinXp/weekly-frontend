@@ -10,7 +10,6 @@ export default function Mplus() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        this.handleClick = this.handleClick.bind(this);
         if(!isLoaded)  {
             loadMplusKeys();
         }
@@ -42,23 +41,6 @@ export default function Mplus() {
         return response;
     }
 
-    async function postData(url, data) {
-        data.Completed = 1;
-        axios.post(url, {data1: data.Id}, {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
-        )
-        .then(res => {
-            console.log("Data updated");
-            loadMplusKeys();
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
-
     function getBackgroundColor(mpluskey) {
         if(mpluskey.Completed === "1") {
             return "green";
@@ -68,10 +50,28 @@ export default function Mplus() {
         }
     }
     
+    async function postData(url, data) {
+        data.Completed = 1;
+        axios.post(url, {data1: data.Id}, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+        )
+        .then(res => {
+            var button = document.getElementById(data.Counter);
+            button.style.backgroundColor = "Green";
+            console.log("Data updated");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+    
     if (error) {
         return <div>Error: {error.message}</div>;
     } else {
-    return <div><div><h2>Mythic Plus Keys </h2></div> <div className="mpluskeys">
+    return <div><div><h2>Mythic Plus Keys Hunter</h2></div> <div className="mpluskeys">
         {data && data?.map(mpluskey => (
             <button id={mpluskey.Counter} value={mpluskey} style={{backgroundColor: getBackgroundColor(mpluskey)}} className="key" key={mpluskey.Counter} 
                 onClick={(e) => handleClick(e, mpluskey)}> {mpluskey.Counter}

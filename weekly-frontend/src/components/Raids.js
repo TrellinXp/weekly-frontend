@@ -77,7 +77,8 @@ export default function Raids(props) {
         )
         .then(res => {
             console.log("Data updated");
-            loadRaids();
+            var button = document.getElementById('raid'+difficulty+data.Counter);
+            button.style.backgroundColor = "Green";
         })
         .catch((err) => {
             console.log(err);
@@ -91,14 +92,14 @@ export default function Raids(props) {
         else {
             return "white";
         }
-    }
+    }    
 
     if (error) {
         return <div>Error: {error.message}</div>;
     } else {
     return <div><div><h2>Raid Bosses {difficulty}</h2></div> <div className="mpluskeys">
         {data && data?.map(raid => (
-            <button id={'raid'+difficulty+raid.Counter} value={raid} className="raid"  style={{backgroundColor: getBackgroundColor(raid)}}  key={raid.Counter} onClick={(e) => handleClick(e, raid)}>
+            <button id={'raid'+difficulty+raid.Counter} value={raid} style={{backgroundColor: getBackgroundColor(raid)}} className="raid" key={raid.Counter} onClick={(e) => handleClick(e, raid)}>
                 {raid.Counter}
             </button>
         ))}
