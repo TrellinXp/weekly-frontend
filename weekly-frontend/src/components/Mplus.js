@@ -9,13 +9,6 @@ export default function Mplus() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    //create your forceUpdate hook
-    function UpdatePage(){
-        const [value, setValue] = useState(0); // integer state
-        return () => setValue(value => value + 1); // update the state to force render
-    }
-
-
     useEffect(() => {
         this.handleClick = this.handleClick.bind(this);
         if(!isLoaded)  {
@@ -46,7 +39,6 @@ export default function Mplus() {
         mpluskey.CompletionDate = Date.now();
         mpluskey.Completed = 1;
         const response = postData(weeklyApi, mpluskey);
-        UpdatePage();
         return response;
     }
 
