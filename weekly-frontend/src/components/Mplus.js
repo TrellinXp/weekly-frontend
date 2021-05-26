@@ -6,7 +6,7 @@ export default function Mplus(props) {
 
     const [data, setData] = useState([]);
     const charactername = props.charactername;
-    const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly?charactername'+charactername;
+    const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly?charactername='+charactername;
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
