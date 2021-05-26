@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './Mplus.css';
 import axios from 'axios';
 
-export default function Mplus() {
+export default function Mplus(props) {
 
     const [data, setData] = useState([]);
-    const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly';
+    const charactername = props.charactername;
+    const weeklyApi = 'https://wowweekly-node.herokuapp.com/api/weekly?charactername'+charactername;
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -21,7 +22,6 @@ export default function Mplus() {
         .then(
             (result) => {
                 setIsLoaded(true);
-                console.log("Loaded Data "+JSON.stringify(result));
                 setData(result);
             },
             // Note: it's important to handle errors here
@@ -71,13 +71,13 @@ export default function Mplus() {
     if (error) {
         return <div>Error: {error.message}</div>;
     } else {
-    return <div><div><h2>Mythic Plus Keys Hunter</h2></div> <div className="mpluskeys">
-        {data && data?.map(mpluskey => (
-            <button id={mpluskey.Counter} value={mpluskey} style={{backgroundColor: getBackgroundColor(mpluskey)}} className="key" key={mpluskey.Counter} 
-                onClick={(e) => handleClick(e, mpluskey)}> {mpluskey.Counter}
-            </button>
-        ))}
-    </div>
-    </div>
+        return <div>
+                    <div><h2>Mythic Plus Keys {charactername}</h2></div> <div className="mpluskeys">
+                    {data && data?.map(mpluskey => (
+                        <button id={mpluskey.Counter} value={mpluskey} style={{ backgroundColor: getBackgroundColor(mpluskey) }} className="key" key={mpluskey.Counter}
+                            onClick={(e) => handleClick(e, mpluskey)}> {mpluskey.Counter}
+                        </button>
+                    ))}</div>
+        </div>
     }
 }
