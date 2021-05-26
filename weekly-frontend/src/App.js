@@ -9,7 +9,6 @@ function App() {
       <h1>Weekly WoW</h1> 
       <div className="App">
         <Mplus charactername="Turinus"></Mplus>
-        <Mplus charactername="Trellin"></Mplus>
         <Raids difficulty="NHC"></Raids>
         <Raids difficulty="HC"></Raids>
         <Reset></Reset>
